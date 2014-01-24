@@ -10,9 +10,7 @@ GameplayScreen::GameplayScreen()
 
 GameplayScreen::~GameplayScreen()
 {
-	/*delete(m_p_Bob);
-	delete(m_p_Square);
-	delete(m_p_Map);*/
+	delete(m_p_Map);
 }
 
 void GameplayScreen::Initialize(ScreenManager* manager)
@@ -24,10 +22,11 @@ void GameplayScreen::LoadContent(SDL_Renderer* renderer, ContentManager* conMan)
 {
 	/*m_p_SoundManager = new SoundManager(conMan);
 	conMan->LoadSoundEffect("laser.wav");
-	conMan->LoadTexture("Tiles.png");
 	conMan->LoadTexture("bob.png");
 	conMan->LoadTexture("square.png");*/
 	//*m_p_SoundManager->PlaySoundEffect("laser.wav");*/
+	conMan->LoadTexture("Tiles.png");
+	m_p_Map = new TileMap(conMan->GetTexture("Tiles.png"));
 }
 
 void GameplayScreen::UnloadContent()
@@ -40,6 +39,7 @@ void GameplayScreen::Update(Uint32 timeElapsed)
 
 void GameplayScreen::Draw(SDL_Renderer* renderer)
 {
+	m_p_Map->Draw(renderer/*, m_p_Manager->GetCamera()*/);
 }
 
 void GameplayScreen::HandleInput(InputHandler* input)

@@ -2,7 +2,7 @@
 #define GAMEPLAYSCREEN_H
 #include "GameScreen.h"
 //#include "Character.h"
-//#include "TileMap.h"
+#include "TileMap.h"
 //#include "SoundManager.h"
 #include <SDL_mixer.h>
 
@@ -20,7 +20,8 @@ public:
 	void Draw(SDL_Renderer* renderer);
 	void HandleInput(InputHandler* input);
 	void HandleEvents(SDL_Event sdlEvent);
-//private:
+private:
+	TileMap* m_p_Map;
 };
 
 #endif
