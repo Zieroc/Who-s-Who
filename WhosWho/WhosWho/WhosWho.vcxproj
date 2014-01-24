@@ -78,12 +78,26 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="CC_Texture.h" />
+    <ClInclude Include="ContentManager.h" />
     <ClInclude Include="Debug.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="GamePlayScreen.h" />
+    <ClInclude Include="GameScreen.h" />
+    <ClInclude Include="InputHandler.h" />
+    <ClInclude Include="ScreenManager.h" />
+    <ClInclude Include="Sprite.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CC_Texture.cpp" />
+    <ClCompile Include="ContentManager.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GamePlayScreen.cpp" />
+    <ClCompile Include="GameScreen.cpp" />
+    <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="ScreenManager.cpp" />
+    <ClCompile Include="Sprite.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
