@@ -2,10 +2,9 @@
 #define GAMEPLAYSCREEN_H
 #include "GameScreen.h"
 //#include "Character.h"
-//#include "TileMap.h"
+#include "TileMap.h"
 //#include "SoundManager.h"
 #include <SDL_mixer.h>
-#include "NPC.h"
 
 //CURRENTLY USED FOR TESTING
 
@@ -22,7 +21,7 @@ public:
 	void HandleInput(InputHandler* input);
 	void HandleEvents(SDL_Event sdlEvent);
 private:
-	NPC* testNPC;
+	TileMap* m_p_Map;
 };
 
 #endif

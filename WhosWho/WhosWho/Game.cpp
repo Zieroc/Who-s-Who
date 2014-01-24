@@ -5,15 +5,15 @@
 Game::Game()
 {
 	m_Running = true;
-	//m_p_ScreenManager = NULL;
+	m_p_ScreenManager = NULL;
 	m_LastTime = SDL_GetTicks();
-	//m_p_ContentManager = NULL;
+	m_p_ContentManager = NULL;
 }
 
 Game::~Game()
 {
-	//delete(m_p_ScreenManager);
-	//delete(m_p_ContentManager);
+	delete(m_p_ScreenManager);
+	delete(m_p_ContentManager);
 	//delete(m_p_Camera);
 }
 
@@ -54,8 +54,8 @@ bool Game::Initialize(const char* title, int x, int y, int width, int height, in
 			return false;
 		}
 
-		//m_p_ContentManager = new ContentManager(m_p_Renderer);
-		//m_p_ScreenManager = new ScreenManager(m_p_Renderer, m_p_ContentManager);
+		m_p_ContentManager = new ContentManager(m_p_Renderer);
+		m_p_ScreenManager = new ScreenManager(m_p_Renderer, m_p_ContentManager);
 		return true;
 	}
 	else
@@ -68,13 +68,13 @@ bool Game::Initialize(const char* title, int x, int y, int width, int height, in
 void Game::Draw()
 {
 	SDL_RenderClear(m_p_Renderer);
-	//m_p_ScreenManager->Draw();
+	m_p_ScreenManager->Draw();
 	SDL_RenderPresent(m_p_Renderer);
 }
 
 void Game::Update()
 {
-	//m_p_ScreenManager->Update(GetTimeElapsed());
+	m_p_ScreenManager->Update(GetTimeElapsed());
 	m_LastTime = SDL_GetTicks(); //Update time
 }
 
@@ -94,7 +94,7 @@ void Game::HandleEvents()
 		}
 	}
 
-	//m_p_ScreenManager->HandleEvents(event); // If it isn't an main event let the screens handle it
+	m_p_ScreenManager->HandleEvents(event); // If it isn't an main event let the screens handle it
 }
 
 bool Game::IsRunning()
