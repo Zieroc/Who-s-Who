@@ -34,15 +34,6 @@
     <Filter Include="Header Files\Screens">
       <UniqueIdentifier>{69ef8dcd-4f2d-4a30-adb1-03842d2618ff}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Tilemap">
-      <UniqueIdentifier>{be958b57-36b7-40ba-a20d-40701af0cb0b}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\Tilemap">
-      <UniqueIdentifier>{cb47bd75-dc01-483a-b1ba-1c08fbfec707}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Source Files\Screens">
-      <UniqueIdentifier>{fa7f5054-b080-4e5e-8144-7b0fe8a8eb15}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game.h">
@@ -72,11 +63,11 @@
     <ClInclude Include="GamePlayScreen.h">
       <Filter>Header Files\Screens</Filter>
     </ClInclude>
-    <ClInclude Include="Tile.h">
-      <Filter>Header Files\Tilemap</Filter>
+    <ClInclude Include="NPC.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Tilemap.h">
-      <Filter>Header Files\Tilemap</Filter>
+    <ClInclude Include="GameObject.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -104,14 +95,11 @@
     <ClCompile Include="Sprite.cpp">
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
-    <ClCompile Include="Tile.cpp">
-      <Filter>Source Files\Tilemap</Filter>
-    </ClCompile>
     <ClCompile Include="GamePlayScreen.cpp">
-      <Filter>Source Files\Screens</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Tilemap.cpp">
-      <Filter>Source Files\Tilemap</Filter>
+    <ClCompile Include="NPC.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
