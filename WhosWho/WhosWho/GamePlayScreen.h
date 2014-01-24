@@ -5,6 +5,7 @@
 //#include "TileMap.h"
 //#include "SoundManager.h"
 #include <SDL_mixer.h>
+#include "NPC.h"
 
 //CURRENTLY USED FOR TESTING
 
@@ -20,7 +21,8 @@ public:
 	void Draw(SDL_Renderer* renderer);
 	void HandleInput(InputHandler* input);
 	void HandleEvents(SDL_Event sdlEvent);
-//private:
+private:
+	NPC* testNPC;
 };
 
 #endif
