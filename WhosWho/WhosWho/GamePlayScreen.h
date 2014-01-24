@@ -5,6 +5,7 @@
 #include "TileMap.h"
 //#include "SoundManager.h"
 #include <SDL_mixer.h>
+#include "NPC.h"
 
 //CURRENTLY USED FOR TESTING
 
@@ -22,6 +23,7 @@ public:
 	void HandleEvents(SDL_Event sdlEvent);
 private:
 	TileMap* m_p_Map;
+	NPC* npcTest;
 };
 
 #endif
