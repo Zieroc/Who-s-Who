@@ -63,6 +63,12 @@
     <ClInclude Include="GamePlayScreen.h">
       <Filter>Header Files\Screens</Filter>
     </ClInclude>
+    <ClInclude Include="Tile.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tilemap.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
     <ClInclude Include="NPC.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -96,6 +102,12 @@
       <Filter>Source Files\Graphics</Filter>
     </ClCompile>
     <ClCompile Include="GamePlayScreen.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tilemap.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="NPC.cpp">

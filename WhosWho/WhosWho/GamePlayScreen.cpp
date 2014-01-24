@@ -25,6 +25,10 @@ void GameplayScreen::LoadContent(SDL_Renderer* renderer, ContentManager* conMan)
 	conMan->LoadTexture("bob.png");
 	conMan->LoadTexture("square.png");*/
 	//*m_p_SoundManager->PlaySoundEffect("laser.wav");*/
+
+	conMan->LoadTexture("circle.png");
+	npcTest = new NPC();
+	npcTest->Initialize(conMan->GetTexture("circle.png"));
 	conMan->LoadTexture("Tiles.png");
 	m_p_Map = new TileMap(conMan->GetTexture("Tiles.png"));
 }
@@ -35,11 +39,13 @@ void GameplayScreen::UnloadContent()
 
 void GameplayScreen::Update(Uint32 timeElapsed)
 {
+	npcTest->Update(timeElapsed);
 }
 
 void GameplayScreen::Draw(SDL_Renderer* renderer)
 {
 	m_p_Map->Draw(renderer/*, m_p_Manager->GetCamera()*/);
+	npcTest->Draw(renderer);
 }
 
 void GameplayScreen::HandleInput(InputHandler* input)
