@@ -39,7 +39,7 @@ void NPCManager::Update(Uint32 timeElapsed, InputHandler* input)
 
 	if(NPCs.at(p1)->attacking)
 	{
-		if(SDL_HasIntersection(&NPCs.at(p1)->bounds, &NPCs.at(p2)->bounds))
+		if(SDL_HasIntersection(&NPCs.at(p1)->killBounds, &NPCs.at(p2)->bounds))
 		{
 			NPCs.at(p1)->hit = true;
 			blipManager->Add(NPCs.at(p1)->x - 40, NPCs.at(p1)->y - 44, NPCs.at(p1)->hit);
@@ -51,14 +51,14 @@ void NPCManager::Update(Uint32 timeElapsed, InputHandler* input)
 		{
 			NPCs.at(p1)->hit = false;
 			blipManager->Add(NPCs.at(p1)->x - 40, NPCs.at(p1)->y - 44, NPCs.at(p1)->hit);
-			soundMan->PlaySoundEffect("miss.wav");
+			//soundMan->PlaySoundEffect("miss.wav");
 		}
 
 		NPCs.at(p1)->attacking = false;
 	}
 	if(NPCs.at(p2)->attacking)
 	{
-		if(SDL_HasIntersection(&NPCs.at(p1)->bounds, &NPCs.at(p2)->bounds))
+		if(SDL_HasIntersection(&NPCs.at(p2)->killBounds, &NPCs.at(p1)->bounds))
 		{
 			NPCs.at(p2)->hit = true;
 			blipManager->Add(NPCs.at(p2)->x - 40, NPCs.at(p2)->y - 44, NPCs.at(p2)->hit);
@@ -70,7 +70,7 @@ void NPCManager::Update(Uint32 timeElapsed, InputHandler* input)
 		{
 			NPCs.at(p2)->hit = false;
 			blipManager->Add(NPCs.at(p2)->x - 40, NPCs.at(p2)->y - 44, NPCs.at(p2)->hit);
-			soundMan->PlaySoundEffect("miss.wav");
+			//soundMan->PlaySoundEffect("miss.wav");
 		}
 
 		NPCs.at(p2)->attacking = false;

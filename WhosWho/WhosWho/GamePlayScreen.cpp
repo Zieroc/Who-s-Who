@@ -81,10 +81,10 @@ void GameplayScreen::Draw(SDL_Renderer* renderer)
 
 void GameplayScreen::HandleInput(InputHandler* input)
 {
-	if(input->KeyPressed(SDLK_SPACE))
+	/*if(input->KeyPressed(SDLK_SPACE))
 	{
 		npcManager->Swap(1);
-	}
+	}*/
 }
 
 void GameplayScreen::HandleEvents(SDL_Event sdlEvent)
