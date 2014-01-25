@@ -1,6 +1,6 @@
 #include "NPC.h"
 
-NPC::NPC(CC_Texture* texture, CC_Texture* texture2, TileMap* map)
+NPC::NPC(CC_Texture* texture, TileMap* map)
 {
 	attacking = false;
 	pressed = false;
@@ -27,7 +27,6 @@ NPC::NPC(CC_Texture* texture, CC_Texture* texture2, TileMap* map)
 	}
 	
 	image = new Sprite(texture, 16, 16);
-	blip = new Sprite(texture2, 32, 32);
 
 	speed = 55;
 	type = Normal;
@@ -181,22 +180,11 @@ void NPC::Update(Uint32 timeElapsed, InputHandler* input)
 	x += velX;
 	y += velY;
 	CalcBounds();
-
-	if(attacking == true)
-	{
-		blip->Update(timeElapsed);
-	}
 }
 
 void NPC::Draw(SDL_Renderer* renderer)
 {
 	image->Draw(renderer, x, y, flipped);
-
-	if(attacking == true)
-	{
-		blip->SwitchAnimation(0);
-		blip->Draw(renderer, x, y, flipped);
-	}
 }
 
 void NPC::HorizontalTileCollisionTest()

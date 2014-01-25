@@ -13,8 +13,8 @@ public:
 	int GetFrame();
 private:
 	int m_StartFrame;
-	int m_EndFrame;
 	int m_CurrentState;
+	int m_EndFrame;
 	bool m_looping;
 };
 

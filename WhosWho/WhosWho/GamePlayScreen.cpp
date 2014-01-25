@@ -12,6 +12,7 @@ GameplayScreen::~GameplayScreen()
 {
 	delete(m_p_Map);
 	delete(npcManager);
+	delete(m_p_SoundManager);
 }
 
 void GameplayScreen::Initialize(ScreenManager* manager)
@@ -24,13 +25,13 @@ void GameplayScreen::LoadContent(SDL_Renderer* renderer, ContentManager* conMan)
 	m_p_SoundManager = new SoundManager(conMan);
 	conMan->LoadSoundEffect("miss.wav");
 	conMan->LoadSoundEffect("hit.wav");
+	//*m_p_SoundManager->PlaySoundEffect("laser.wav");*/
 	
 	conMan->LoadTexture("Tiles.png");
 	m_p_Map = new TileMap(conMan->GetTexture("Tiles.png"));
 	m_p_Map->LoadMap("data/Files/arena.lvl");
 
 	conMan->LoadTexture("circle.png");
-	conMan->LoadTexture("blip.png");
 	npcManager = new NPCManager(conMan, m_p_Map, m_p_SoundManager);
 }
 

@@ -79,6 +79,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
+    <ClInclude Include="Blip.h" />
+    <ClInclude Include="BlipManager.h" />
     <ClInclude Include="CC_Texture.h" />
     <ClInclude Include="ContentManager.h" />
     <ClInclude Include="Debug.h" />
@@ -97,6 +99,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="Blip.cpp" />
+    <ClCompile Include="BlipManager.cpp" />
     <ClCompile Include="CC_Texture.cpp" />
     <ClCompile Include="ContentManager.cpp" />
     <ClCompile Include="Game.cpp" />

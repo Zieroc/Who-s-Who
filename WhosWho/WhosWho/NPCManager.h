@@ -3,8 +3,9 @@
 
 #include "NPC.h"
 #include "ContentManager.h"
-#include "Tilemap.h"
 #include "SoundManager.h"
+#include "Tilemap.h"
+#include "BlipManager.h"
 #include <vector>
 
 using std::vector;
@@ -16,12 +17,12 @@ public:
 	~NPCManager();
 	void Update(Uint32 timeElapsed, InputHandler*);
 	void Draw(SDL_Renderer*);
-	void Initialise();
 	void Add();
 	void Swap(int);
 	vector<NPC*> NPCs;
 	SDL_Renderer* renderer;
 	ContentManager* conMan;
+	BlipManager* blipManager;
 	TileMap* map;
 	int max;
 	int p1, p2;

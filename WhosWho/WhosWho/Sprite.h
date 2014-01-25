@@ -16,6 +16,7 @@ public:
 	void Tint(Uint8 r, Uint8 g, Uint8 b);
 	void AddAnimation(int, int, bool);
 	void SwitchAnimation(int animation);
+	Animation* m_CurrentAnimation;
 private:
 	CC_Texture* m_p_Texture;
 	SDL_Rect m_SourceRect; //Used to crop the image for animation frames
@@ -26,7 +27,6 @@ private:
 	Uint32 m_Interval;
 	std::vector<Animation*> m_p_Animations;
 	bool m_Animate;
-	Animation* m_CurrentAnimation;
 };
 
 #endif

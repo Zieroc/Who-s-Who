@@ -7,8 +7,6 @@
 #include <SDL_mixer.h>
 #include "NPCManager.h"
 
-//CURRENTLY USED FOR TESTING
-
 class GameplayScreen : public GameScreen
 {
 public:
