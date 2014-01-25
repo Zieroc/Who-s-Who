@@ -7,7 +7,7 @@ NPC::NPC(CC_Texture* texture, TileMap* map)
 	direction = 0;
 	timer = 0;
 	x = rand() % (740 - 16) + 20;
-	y = rand() % (600 - 16) + 20;
+	y = rand() % (600 - 16) + 90;
 
 	if(x < 16)
 	{
