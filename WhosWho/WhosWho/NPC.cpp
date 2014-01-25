@@ -28,6 +28,8 @@ NPC::NPC(CC_Texture* texture, TileMap* map)
 	
 	image = new Sprite(texture, 16, 16);
 
+	P1speed = 55;
+	P2speed = 55;
 	speed = 55;
 	type = Normal;
 	bounds.x = x;
@@ -110,19 +112,27 @@ void NPC::Update(Uint32 timeElapsed, InputHandler* input)
 	{
 		if(input->KeyPressed(SDLK_w))
 		{
-			velY = -speed * (timeElapsed / 1000.0f);
+			velY = -P1speed * (timeElapsed / 1000.0f);
 		}
 		if(input->KeyPressed(SDLK_s))
 		{
-			velY = speed * (timeElapsed / 1000.0f);
+			velY = P1speed * (timeElapsed / 1000.0f);
 		}
 		if(input->KeyPressed(SDLK_a))
 		{
-			velX = -speed * (timeElapsed / 1000.0f);
+			velX = -P1speed * (timeElapsed / 1000.0f);
 		}
 		if(input->KeyPressed(SDLK_d))
 		{
-			velX = speed * (timeElapsed / 1000.0f);
+			velX = P1speed * (timeElapsed / 1000.0f);
+		}
+		if(input->KeyPressed(SDLK_e))
+		{
+			P1speed = 85;
+		}
+		else
+		{
+			P1speed = 55;
 		}
 		
 		if(input->KeyPressed(SDLK_f) && !pressed)
@@ -144,20 +154,29 @@ void NPC::Update(Uint32 timeElapsed, InputHandler* input)
 	{
 		if(input->KeyPressed(SDLK_UP))
 		{
-			velY = -speed * (timeElapsed / 1000.0f);
+			velY = -P2speed * (timeElapsed / 1000.0f);
 		}
 		if(input->KeyPressed(SDLK_DOWN))
 		{
-			velY = speed * (timeElapsed / 1000.0f);
+			velY = P2speed * (timeElapsed / 1000.0f);
 		}
 		if(input->KeyPressed(SDLK_LEFT))
 		{
-			velX = -speed * (timeElapsed / 1000.0f);
+			velX = -P2speed * (timeElapsed / 1000.0f);
 		}
 		if(input->KeyPressed(SDLK_RIGHT))
 		{
-			velX = speed * (timeElapsed / 1000.0f);
+			velX = P2speed * (timeElapsed / 1000.0f);
 		}
+		if(input->KeyPressed(SDLK_RCTRL))
+		{
+			P2speed = 85;
+		}
+		else
+		{
+			P2speed = 55;
+		}
+
 
 		if(input->KeyPressed(SDLK_KP_0) && !pressed)
 		{
