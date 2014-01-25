@@ -7,9 +7,8 @@
 class NPC : public GameObject
 {
 public:
-	NPC();
+	NPC(CC_Texture*, TileMap*);
 	~NPC();
-	void Initialize(CC_Texture*, TileMap*);
 	void Update(Uint32, InputHandler*);
 	void Draw(SDL_Renderer*);
 	void HorizontalTileCollisionTest();

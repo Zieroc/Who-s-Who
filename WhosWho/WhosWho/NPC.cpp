@@ -1,19 +1,11 @@
 #include "NPC.h"
 
-NPC::NPC()
+NPC::NPC(CC_Texture* texture, TileMap* map)
 {
-	x = 100;
-	y = 100;
-}
 
-NPC::~NPC()
-{
-	delete(m_p_Map);
-	delete(image);
-}
-
-void NPC::Initialize(CC_Texture* texture, TileMap* map)
-{
+	x = rand() % 740 + 20;
+	y = rand() % 600 + 20;
+	
 	image = new Sprite(texture, 16, 16);
 	speed = 70;
 	type = Normal;
@@ -23,6 +15,13 @@ void NPC::Initialize(CC_Texture* texture, TileMap* map)
 	bounds.h = texture->GetHeight();
 	m_p_Map = map;
 }
+
+NPC::~NPC()
+{
+	delete(m_p_Map);
+	delete(image);
+}
+
 
 void NPC::Update(Uint32 timeElapsed, InputHandler* input)
 {
