@@ -20,5 +20,6 @@ public:
 	float timer;
 	bool pressed;
 	bool attacking;
+	bool hit;
 };
 #endif

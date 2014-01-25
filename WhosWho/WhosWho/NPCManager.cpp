@@ -8,6 +8,7 @@ NPCManager::NPCManager(ContentManager* conManRef, TileMap* tileMapRef, SoundMana
 	max = 175;
 
 	conMan->LoadTexture("blip.png");
+	conMan->LoadTexture("blip2.png");
 
 	blipManager = new BlipManager(conMan);
 
@@ -38,12 +39,15 @@ void NPCManager::Update(Uint32 timeElapsed, InputHandler* input)
 	{
 		if(SDL_HasIntersection(&NPCs.at(p1)->bounds, &NPCs.at(p2)->bounds))
 		{
+			NPCs.at(p1)->hit = true;
+			blipManager->Add(NPCs.at(p1)->x - 40, NPCs.at(p1)->y - 44, NPCs.at(p1)->hit);
 			Swap(2);
 			soundMan->PlaySoundEffect("hit.wav");
 		}
 		else
 		{
-			blipManager->Add(NPCs.at(p1)->x - 40, NPCs.at(p1)->y - 44);
+			NPCs.at(p1)->hit = false;
+			blipManager->Add(NPCs.at(p1)->x - 40, NPCs.at(p1)->y - 44, NPCs.at(p1)->hit);
 			soundMan->PlaySoundEffect("miss.wav");
 		}
 
@@ -53,12 +57,15 @@ void NPCManager::Update(Uint32 timeElapsed, InputHandler* input)
 	{
 		if(SDL_HasIntersection(&NPCs.at(p1)->bounds, &NPCs.at(p2)->bounds))
 		{
+			NPCs.at(p2)->hit = true;
+			blipManager->Add(NPCs.at(p2)->x - 40, NPCs.at(p2)->y - 44, NPCs.at(p2)->hit);
 			Swap(1);
 			soundMan->PlaySoundEffect("hit.wav");
 		}
 		else
 		{
-			blipManager->Add(NPCs.at(p2)->x - 40, NPCs.at(p2)->y - 44);
+			NPCs.at(p2)->hit = false;
+			blipManager->Add(NPCs.at(p2)->x - 40, NPCs.at(p2)->y - 44, NPCs.at(p2)->hit);
 			soundMan->PlaySoundEffect("miss.wav");
 		}
 

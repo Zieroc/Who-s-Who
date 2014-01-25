@@ -15,6 +15,8 @@ public:
 	void Draw(SDL_Renderer*);
 	void Initialize(CC_Texture*);
 	float x, y;
+	float P1speed;
+	float P2speed;
 	float speed;
 	float velX;
 	float velY;
