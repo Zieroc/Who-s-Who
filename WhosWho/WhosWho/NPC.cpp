@@ -27,6 +27,7 @@ NPC::NPC(CC_Texture* texture, TileMap* map)
 	}
 	
 	image = new Sprite(texture, 16, 16);
+
 	speed = 55;
 	type = Normal;
 	bounds.x = x;

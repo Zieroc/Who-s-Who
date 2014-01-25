@@ -1,10 +1,15 @@
 #include "NPCManager.h"
 
-NPCManager::NPCManager(ContentManager* conManRef, TileMap* tileMapRef)
+NPCManager::NPCManager(ContentManager* conManRef, TileMap* tileMapRef, SoundManager* soundManRef)
 {
+	soundMan = soundManRef;
 	conMan = conManRef;
 	map = tileMapRef;
 	max = 175;
+
+	conMan->LoadTexture("blip.png");
+
+	blipManager = new BlipManager(conMan);
 
 	for(int i = 0; i < max; i++)
 	{
@@ -34,10 +39,12 @@ void NPCManager::Update(Uint32 timeElapsed, InputHandler* input)
 		if(SDL_HasIntersection(&NPCs.at(p1)->bounds, &NPCs.at(p2)->bounds))
 		{
 			Swap(2);
+			soundMan->PlaySoundEffect("hit.wav");
 		}
 		else
 		{
-			NPCs.at(p1)->Tint(0, 0, 255);
+			blipManager->Add(NPCs.at(p1)->x - 40, NPCs.at(p1)->y - 44);
+			soundMan->PlaySoundEffect("miss.wav");
 		}
 
 		NPCs.at(p1)->attacking = false;
@@ -47,14 +54,18 @@ void NPCManager::Update(Uint32 timeElapsed, InputHandler* input)
 		if(SDL_HasIntersection(&NPCs.at(p1)->bounds, &NPCs.at(p2)->bounds))
 		{
 			Swap(1);
+			soundMan->PlaySoundEffect("hit.wav");
 		}
 		else
 		{
-			//FLASH
+			blipManager->Add(NPCs.at(p2)->x - 40, NPCs.at(p2)->y - 44);
+			soundMan->PlaySoundEffect("miss.wav");
 		}
 
 		NPCs.at(p2)->attacking = false;
 	}
+
+	blipManager->Update(timeElapsed, input);
 }
 
 void NPCManager::Draw(SDL_Renderer* renderer)
@@ -63,6 +74,8 @@ void NPCManager::Draw(SDL_Renderer* renderer)
 	{
 		NPCs.at(i)->Draw(renderer);
 	}
+
+	blipManager->Draw(renderer);
 }
 
 // create a new NPC

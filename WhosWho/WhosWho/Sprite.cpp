@@ -16,26 +16,33 @@ Sprite::Sprite(CC_Texture* texture, int width, int height)
 
 	m_Timer = 0;
 	m_Interval = 100;
+
+	m_p_Animations.push_back(new Animation(0, m_Columns * m_Rows - 1, false));
+	m_CurrentAnimation = m_p_Animations[0];
 }
 
 Sprite::~Sprite()
 {
+	for(std::vector<Animation*>::size_type i = 0; i != m_p_Animations.size(); i++)
+	{
+		delete(m_p_Animations[i]);
+	}
 }
 
 void Sprite::Update(Uint32 timeElapsed)
 {
-//	if (m_Animate)
-//	{
-//		m_Timer += timeElapsed;
-//		//Check the timer is more than the chosen interval
-//		if (m_Timer >= m_Interval)
-//		{
-//			//Show the next frame
-//			m_CurrentAnimation->NextState();
-//			//Reset the timer
-//			m_Timer = 0;
-//		}
-//	}
+	if (m_Animate)
+	{
+		m_Timer += timeElapsed;
+		//Check the timer is more than the chosen interval
+		if (m_Timer >= m_Interval)
+		{
+			//Show the next frame
+			m_CurrentAnimation->NextState();
+			//Reset the timer
+			m_Timer = 0;
+		}
+	}
 }
 
 void Sprite::Draw(SDL_Renderer* renderer, int x, int y, bool flipped /*Camera* camera*/)
@@ -43,8 +50,8 @@ void Sprite::Draw(SDL_Renderer* renderer, int x, int y, bool flipped /*Camera* c
 	m_DestinationRect.x = x;
 	m_DestinationRect.y = y;
 
-	m_SourceRect.x = 0;//m_SourceRect.w;// * (m_CurrentAnimation->GetFrame() % m_Columns);
-    m_SourceRect.y = 0;//m_SourceRect.h;// * (m_CurrentAnimation->GetFrame() / m_Columns);
+	m_SourceRect.x = m_SourceRect.w * (m_CurrentAnimation->GetFrame() % m_Columns);
+    m_SourceRect.y = m_SourceRect.h * (m_CurrentAnimation->GetFrame() / m_Columns);
 
 	if(flipped)
 	{
@@ -56,15 +63,15 @@ void Sprite::Draw(SDL_Renderer* renderer, int x, int y, bool flipped /*Camera* c
 	}
 }
 
-//void Sprite::AddAnimation(int startFrame, int  endFrame, bool looping)
-//{
-//	m_p_Animations.push_back(new Animation(startFrame, endFrame, looping));
-//}
-//
-//void Sprite::SwitchAnimation(int animation)
-//{
-//	m_CurrentAnimation = m_p_Animations[animation];
-//}
+void Sprite::AddAnimation(int startFrame, int  endFrame, bool looping)
+{
+	m_p_Animations.push_back(new Animation(startFrame, endFrame, looping));
+}
+
+void Sprite::SwitchAnimation(int animation)
+{
+	m_CurrentAnimation = m_p_Animations[animation];
+}
 
 void Sprite::Tint(Uint8 r, Uint8 g, Uint8 b)
 {
