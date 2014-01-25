@@ -27,6 +27,10 @@ void NPCManager::Update(Uint32 timeElapsed, InputHandler* input)
 	for(std::size_t i = 0; i < NPCs.size(); i++)
 	{
 		NPCs.at(i)->Update(timeElapsed, input);
+		if(NPCs.at(i)->Player1)
+		{
+			NPCs.at(i)->image->m_p_Texture == conMan->GetTexture("Player1.png");
+		}
 	}
 
 	if(NPCs.at(p1)->attacking)
