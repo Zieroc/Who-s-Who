@@ -13,7 +13,7 @@ using std::vector;
 class NPCManager
 {
 public:
-	NPCManager(ContentManager* conManRef, TileMap* tileMapRef, SoundManager* soundManRef);
+	NPCManager(ContentManager* conManRef, TileMap* tileMapRef, SoundManager* soundManRef, int* p1Kills, int* p2Kills);
 	~NPCManager();
 	void Update(Uint32 timeElapsed, InputHandler*);
 	void Draw(SDL_Renderer*);
@@ -27,5 +27,7 @@ public:
 	int max;
 	int p1, p2;
 	SoundManager* soundMan;
+	int* kill1;
+	int* kill2;
 };
 #endif

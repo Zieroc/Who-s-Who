@@ -1,7 +1,9 @@
 #include "NPCManager.h"
 
-NPCManager::NPCManager(ContentManager* conManRef, TileMap* tileMapRef, SoundManager* soundManRef)
+NPCManager::NPCManager(ContentManager* conManRef, TileMap* tileMapRef, SoundManager* soundManRef, int* p1Kills, int* p2Kills)
 {
+	kill1 = p1Kills;
+	kill2 = p2Kills;
 	soundMan = soundManRef;
 	conMan = conManRef;
 	map = tileMapRef;
@@ -43,6 +45,7 @@ void NPCManager::Update(Uint32 timeElapsed, InputHandler* input)
 			blipManager->Add(NPCs.at(p1)->x - 40, NPCs.at(p1)->y - 44, NPCs.at(p1)->hit);
 			Swap(2);
 			soundMan->PlaySoundEffect("hit.wav");
+			*kill1 += 1;
 		}
 		else
 		{
@@ -61,6 +64,7 @@ void NPCManager::Update(Uint32 timeElapsed, InputHandler* input)
 			blipManager->Add(NPCs.at(p2)->x - 40, NPCs.at(p2)->y - 44, NPCs.at(p2)->hit);
 			Swap(1);
 			soundMan->PlaySoundEffect("hit.wav");
+			*kill2 += 1;
 		}
 		else
 		{

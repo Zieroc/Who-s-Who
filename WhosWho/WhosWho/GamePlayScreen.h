@@ -27,7 +27,9 @@ private:
 	SoundManager* m_p_SoundManager;
 	TTF_Font* font;
 	SDL_Renderer* rendererRef;
-	SDL_Texture* text;
+	SDL_Texture* kills1;
+	int p1Kills;
+	int p2Kills;
 };
 
 #endif
