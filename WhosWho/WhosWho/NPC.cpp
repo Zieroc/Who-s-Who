@@ -290,3 +290,8 @@ void NPC::SetType(int i)
 		break;
 	}
 }
+
+void NPC::Tint(Uint8 r, Uint8 g, Uint8 b)
+{
+	image->Tint(r, g, b);
+}

@@ -65,3 +65,8 @@ void Sprite::Draw(SDL_Renderer* renderer, int x, int y, bool flipped /*Camera* c
 //{
 //	m_CurrentAnimation = m_p_Animations[animation];
 //}
+
+void Sprite::Tint(Uint8 r, Uint8 g, Uint8 b)
+{
+	SDL_SetTextureColorMod(m_p_Texture->GetTexture(), r, g, b);
+}
