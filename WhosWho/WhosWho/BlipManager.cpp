@@ -27,7 +27,17 @@ void BlipManager::Draw(SDL_Renderer* renderer)
 }
 
 // create a new Blip
-void BlipManager::Add(int playerX, int playerY)
+void BlipManager::Add(int playerX, int playerY, int hit2)
 {
-	Blips.push_back(new Blip(con->GetTexture("blip.png"), playerX, playerY));
+	hit = hit2;
+
+	if(hit == true)
+	{
+		Blips.push_back(new Blip(con->GetTexture("blip2.png"), playerX, playerY));
+	}
+
+	if(hit == false)
+	{
+		Blips.push_back(new Blip(con->GetTexture("blip.png"), playerX, playerY));
+	}
 }
