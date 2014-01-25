@@ -21,5 +21,6 @@ public:
 	bool pressed;
 	bool attacking;
 	bool hit;
+	SDL_Rect killBounds;
 };
 #endif

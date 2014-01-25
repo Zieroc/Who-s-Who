@@ -7,7 +7,7 @@ NPC::NPC(CC_Texture* texture, TileMap* map)
 	direction = 0;
 	timer = 0;
 	x = rand() % (740 - 16) + 20;
-	y = rand() % (600 - 16) + 20;
+	y = rand() % (600 - 86) + 90;
 
 	if(x < 16)
 	{
@@ -36,6 +36,10 @@ NPC::NPC(CC_Texture* texture, TileMap* map)
 	bounds.y = y;
 	bounds.w = texture->GetWidth();
 	bounds.h = texture->GetHeight();
+	killBounds.x = x - 15;
+	killBounds.y = y - 15;
+	killBounds.w = texture->GetWidth() + 30;
+	killBounds.h = texture->GetHeight() + 30;
 	m_p_Map = map;
 }
 
@@ -152,23 +156,23 @@ void NPC::Update(Uint32 timeElapsed, InputHandler* input)
 
 	else if(type == Player2)
 	{
-		if(input->KeyPressed(SDLK_UP))
+		if(input->KeyPressed(SDLK_KP_8))
 		{
 			velY = -P2speed * (timeElapsed / 1000.0f);
 		}
-		if(input->KeyPressed(SDLK_DOWN))
+		if(input->KeyPressed(SDLK_KP_5))
 		{
 			velY = P2speed * (timeElapsed / 1000.0f);
 		}
-		if(input->KeyPressed(SDLK_LEFT))
+		if(input->KeyPressed(SDLK_KP_4))
 		{
 			velX = -P2speed * (timeElapsed / 1000.0f);
 		}
-		if(input->KeyPressed(SDLK_RIGHT))
+		if(input->KeyPressed(SDLK_KP_6))
 		{
 			velX = P2speed * (timeElapsed / 1000.0f);
 		}
-		if(input->KeyPressed(SDLK_RCTRL))
+		if(input->KeyPressed(SDLK_RSHIFT))
 		{
 			P2speed = 85;
 		}
@@ -178,7 +182,7 @@ void NPC::Update(Uint32 timeElapsed, InputHandler* input)
 		}
 
 
-		if(input->KeyPressed(SDLK_KP_0) && !pressed)
+		if(input->KeyPressed(SDLK_KP_ENTER) && !pressed)
 		{
 			pressed = true;
 			attacking = true;
@@ -186,7 +190,7 @@ void NPC::Update(Uint32 timeElapsed, InputHandler* input)
 
 		if(pressed)
 		{
-			if(!input->KeyPressed(SDLK_KP_0))
+			if(!input->KeyPressed(SDLK_KP_ENTER))
 			{
 				pressed = false;
 			}
@@ -293,6 +297,8 @@ void NPC::CalcBounds()
 {
 	bounds.x = x;
 	bounds.y = y;
+	killBounds.x = x - 15;
+	killBounds.y = y - 15;
 }
 
 void NPC::SetType(int i)
