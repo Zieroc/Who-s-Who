@@ -5,7 +5,7 @@
 #include "TileMap.h"
 //#include "SoundManager.h"
 #include <SDL_mixer.h>
-#include "NPC.h"
+#include "NPCManager.h"
 
 //CURRENTLY USED FOR TESTING
 
@@ -17,14 +17,13 @@ public:
 	void Initialize(ScreenManager* manager);
 	void LoadContent(SDL_Renderer* renderer, ContentManager* conMan);
 	void UnloadContent();
-	void Update(Uint32 timeElapsed, InputHandler* input);
+	void Update(Uint32 timeElapsed);
 	void Draw(SDL_Renderer* renderer);
 	void HandleInput(InputHandler* input);
 	void HandleEvents(SDL_Event sdlEvent);
 private:
 	TileMap* m_p_Map;
-	NPC* npcTest;
-	NPC* npc2;
+	NPCManager* npcManager;
 };
 
 #endif
