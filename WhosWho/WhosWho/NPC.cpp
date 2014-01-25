@@ -1,9 +1,39 @@
 #include "NPC.h"
 
-NPC::NPC()
+NPC::NPC(CC_Texture* texture, TileMap* map)
 {
-	x = 100;
-	y = 100;
+	attacking = false;
+	pressed = false;
+	direction = 0;
+	timer = 0;
+	x = rand() % (740 - 16) + 20;
+	y = rand() % (600 - 16) + 20;
+
+	if(x < 16)
+	{
+		x = 17;
+	}
+	else if(x > 800 - 16)
+	{
+		x = 800 - 17;
+	}
+	if(y < 16)
+	{
+		y = 17;
+	}
+	else if(y > 640 - 16)
+	{
+		y = 640 - 17;
+	}
+	
+	image = new Sprite(texture, 16, 16);
+	speed = 55;
+	type = Normal;
+	bounds.x = x;
+	bounds.y = y;
+	bounds.w = texture->GetWidth();
+	bounds.h = texture->GetHeight();
+	m_p_Map = map;
 }
 
 NPC::~NPC()
@@ -12,17 +42,6 @@ NPC::~NPC()
 	delete(image);
 }
 
-void NPC::Initialize(CC_Texture* texture, TileMap* map)
-{
-	image = new Sprite(texture, 16, 16);
-	speed = 70;
-	type = Normal;
-	bounds.x = x;
-	bounds.y = y;
-	bounds.w = texture->GetWidth();
-	bounds.h = texture->GetHeight();
-	m_p_Map = map;
-}
 
 void NPC::Update(Uint32 timeElapsed, InputHandler* input)
 {
@@ -33,7 +52,58 @@ void NPC::Update(Uint32 timeElapsed, InputHandler* input)
 	
 	if(type == Normal)
 	{
-
+		if(timer > 0)
+		{
+			timer -= timeElapsed;
+			switch(direction)
+			{
+			case 0:
+				velX = 0;
+				velY = 0;
+				break;
+			case 1:
+				velY = -speed * (timeElapsed / 1000.0f);
+				break;
+			case 2:
+				velY = -speed * (timeElapsed / 1000.0f);
+				velX = speed * (timeElapsed / 1000.0f);
+				break;
+			case 3:
+				velX = speed * (timeElapsed / 1000.0f);
+				break;
+			case 4:
+				velY = speed * (timeElapsed / 1000.0f);
+				velX = speed * (timeElapsed / 1000.0f);
+				break;
+			case 5:
+				velY = speed * (timeElapsed / 1000.0f);
+				break;
+			case 6:
+				velY = speed * (timeElapsed / 1000.0f);
+				velX = -speed * (timeElapsed / 1000.0f);
+				break;
+			case 7:
+				velX = -speed * (timeElapsed / 1000.0f);
+				break;
+			case 8:
+				velY = -speed * (timeElapsed / 1000.0f);
+				velX = -speed * (timeElapsed / 1000.0f);
+				break;
+			}
+		}
+		else
+		{
+			direction = rand() % 9;
+			if(direction > 0)
+			{
+				timer = rand() % 6 + 2;
+			}
+			else
+			{
+				timer = rand() % 2 + 1;
+			}
+			timer *= 1000;
+		}
 	}
 	else if(type == Player1)
 	{
@@ -52,6 +122,20 @@ void NPC::Update(Uint32 timeElapsed, InputHandler* input)
 		if(input->KeyPressed(SDLK_d))
 		{
 			velX = speed * (timeElapsed / 1000.0f);
+		}
+		
+		if(input->KeyPressed(SDLK_f) && !pressed)
+		{
+			pressed = true;
+			attacking = true;
+		}
+
+		if(pressed)
+		{
+			if(!input->KeyPressed(SDLK_f))
+			{
+				pressed = false;
+			}
 		}
 	}
 
@@ -72,6 +156,20 @@ void NPC::Update(Uint32 timeElapsed, InputHandler* input)
 		if(input->KeyPressed(SDLK_RIGHT))
 		{
 			velX = speed * (timeElapsed / 1000.0f);
+		}
+
+		if(input->KeyPressed(SDLK_KP_0) && !pressed)
+		{
+			pressed = true;
+			attacking = true;
+		}
+
+		if(pressed)
+		{
+			if(!input->KeyPressed(SDLK_KP_0))
+			{
+				pressed = false;
+			}
 		}
 	}
 
@@ -125,6 +223,7 @@ void NPC::HorizontalTileCollisionTest()
 		if (!m_p_Map->IsCellPassable(mapCell1X, mapCell1Y) || !m_p_Map->IsCellPassable(mapCell2X, mapCell2Y))
 		{
 			velX = 0;
+			timer = 0;
 		}
 	}
 }
@@ -165,6 +264,7 @@ void NPC::VerticalTileCollisionTest()
 		if (!m_p_Map->IsCellPassable(mapCell1X, mapCell1Y) || !m_p_Map->IsCellPassable(mapCell2X, mapCell2Y))
 		{
 			velY = 0;
+			timer = 0;
 		}
 	}
 }
@@ -189,4 +289,9 @@ void NPC::SetType(int i)
 		type = Normal;
 		break;
 	}
+}
+
+void NPC::Tint(Uint8 r, Uint8 g, Uint8 b)
+{
+	image->Tint(r, g, b);
 }

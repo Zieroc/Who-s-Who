@@ -25,21 +25,23 @@ void GameplayScreen::LoadContent(SDL_Renderer* renderer, ContentManager* conMan)
 	conMan->LoadTexture("bob.png");
 	conMan->LoadTexture("square.png");*/
 	//*m_p_SoundManager->PlaySoundEffect("laser.wav");*/
-
-	conMan->LoadTexture("circle.png");
-	npcManager = new NPCManager(conMan);
-	//npcTest->Initialize(conMan->GetTexture("circle.png"));
+	
 	conMan->LoadTexture("Tiles.png");
 	m_p_Map = new TileMap(conMan->GetTexture("Tiles.png"));
+	m_p_Map->LoadMap("data/Files/arena.lvl");
+
+	conMan->LoadTexture("circle.png");
+	npcManager = new NPCManager(conMan, m_p_Map);
+	//npcTest->Initialize(conMan->GetTexture("circle.png"));
 }
 
 void GameplayScreen::UnloadContent()
 {
 }
 
-void GameplayScreen::Update(Uint32 timeElapsed)
+void GameplayScreen::Update(Uint32 timeElapsed, InputHandler* input)
 {
-	npcManager->Update(timeElapsed);
+	npcManager->Update(timeElapsed, input);
 }
 
 void GameplayScreen::Draw(SDL_Renderer* renderer)
@@ -50,10 +52,10 @@ void GameplayScreen::Draw(SDL_Renderer* renderer)
 
 void GameplayScreen::HandleInput(InputHandler* input)
 {
-	/*if(input->KeyPressed(SDLK_SPACE))
+	if(input->KeyPressed(SDLK_SPACE))
 	{
-		m_p_Manager->SwitchState(ScreenManager::GameState::Quit);
-	}*/
+		npcManager->Swap(1);
+	}
 }
 
 void GameplayScreen::HandleEvents(SDL_Event sdlEvent)

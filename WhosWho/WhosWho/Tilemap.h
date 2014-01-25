@@ -16,7 +16,7 @@ using std::string;
 #define MAP_WIDTH 50
 #define MAP_HEIGHT 40
 #define DEFAULT_TILE 0
-#define NUMBER_OF_TILES 2
+#define NUMBER_OF_TILES 4
 
 class TileMap
 {

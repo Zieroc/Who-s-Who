@@ -13,6 +13,7 @@ public:
 	~Sprite();
 	void Update(Uint32 timeElapsed);
 	void Draw(SDL_Renderer* renderer,  int x, int y, bool flipped /*Camera* camera*/);
+	void Tint(Uint8 r, Uint8 g, Uint8 b);
 private:
 	CC_Texture* m_p_Texture;
 	SDL_Rect m_SourceRect; //Used to crop the image for animation frames

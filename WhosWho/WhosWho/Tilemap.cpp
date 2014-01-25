@@ -3,20 +3,13 @@
 
 TileMap::TileMap(CC_Texture* tileSheet)
 {
-	//SetTileCollideInformation();
+	SetTileCollideInformation();
 
 	for(int i = 0; i < MAP_WIDTH; i++)
 	{
 		for(int j = 0; j < MAP_HEIGHT; j++)
 		{
-			if(i == 0 || i == MAP_WIDTH - 1 || j == 0 || j == MAP_HEIGHT - 1)
-			{
-				m_p_MapCells[i][j] = new Tile(1, false);
-			}
-			else
-			{
-				m_p_MapCells[i][j] = new Tile(DEFAULT_TILE, true);
-			}
+			m_p_MapCells[i][j] = new Tile(DEFAULT_TILE, true);
 		}
 	}
 
@@ -123,11 +116,11 @@ void TileMap::LoadMap(string fileName)
 		DEBUG_MSG("ERROR LOADING LEVEL FILE");
 	}
 
-	for(int i = 0; i < MAP_WIDTH; i++)
+	for(int i = 0; i < MAP_HEIGHT; i++)
 	{
-		for(int j = 0; j < MAP_HEIGHT; j++)
+		for(int j = 0; j < MAP_WIDTH; j++)
 		{
-			if (!(file >> data[i][j])) 
+			if (!(file >> data[j][i])) 
 			{
 				DEBUG_MSG("Error reading file");
 				break;
