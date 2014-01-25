@@ -1,4 +1,4 @@
-#include "Game.h"
+#include "Game.h"]
 #include <iostream>
 
 
@@ -46,6 +46,13 @@ bool Game::Initialize(const char* title, int x, int y, int width, int height, in
 			{
 				DEBUG_MSG("Audio Initialisation Failed");
 				return false; 
+			}
+
+			//Initialise TTF Fonts
+			if(TTF_Init() == -1)
+			{
+				DEBUG_MSG("TTF Initialisation Failed");
+				return false;
 			}
 		}
 		else
