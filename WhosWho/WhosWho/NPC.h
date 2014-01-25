@@ -7,7 +7,7 @@
 class NPC : public GameObject
 {
 public:
-	NPC(CC_Texture*, CC_Texture*, TileMap*);
+	NPC(CC_Texture*, TileMap*);
 	~NPC();
 	void Update(Uint32, InputHandler*);
 	void Draw(SDL_Renderer*);

@@ -31,7 +31,6 @@ void GameplayScreen::LoadContent(SDL_Renderer* renderer, ContentManager* conMan)
 	m_p_Map->LoadMap("data/Files/arena.lvl");
 
 	conMan->LoadTexture("circle.png");
-	conMan->LoadTexture("blip.png");
 	npcManager = new NPCManager(conMan, m_p_Map);
 }
 

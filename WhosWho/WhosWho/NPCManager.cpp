@@ -4,7 +4,11 @@ NPCManager::NPCManager(ContentManager* conManRef, TileMap* tileMapRef)
 {
 	conMan = conManRef;
 	map = tileMapRef;
-	max = 10;
+	max = 175;
+
+	conMan->LoadTexture("blip.png");
+
+	blipManager = new BlipManager(conMan);
 
 	for(int i = 0; i < max; i++)
 	{
@@ -37,10 +41,10 @@ void NPCManager::Update(Uint32 timeElapsed, InputHandler* input)
 		}
 		else
 		{
-			//NPCs.at(p1)->Tint(0, 0, 255);
+			blipManager->Add(NPCs.at(p1)->x - 40, NPCs.at(p1)->y - 44);
 		}
 
-		//NPCs.at(p1)->attacking = false;
+		NPCs.at(p1)->attacking = false;
 	}
 	if(NPCs.at(p2)->attacking)
 	{
@@ -50,11 +54,13 @@ void NPCManager::Update(Uint32 timeElapsed, InputHandler* input)
 		}
 		else
 		{
-			//FLASH
+			blipManager->Add(NPCs.at(p2)->x - 40, NPCs.at(p2)->y - 44);
 		}
 
 		NPCs.at(p2)->attacking = false;
 	}
+
+	blipManager->Update(timeElapsed, input);
 }
 
 void NPCManager::Draw(SDL_Renderer* renderer)
@@ -63,12 +69,14 @@ void NPCManager::Draw(SDL_Renderer* renderer)
 	{
 		NPCs.at(i)->Draw(renderer);
 	}
+
+	blipManager->Draw(renderer);
 }
 
 // create a new NPC
 void NPCManager::Add()
 {
-	NPCs.push_back(new NPC(conMan->GetTexture("circle.png"), conMan->GetTexture("blip.png"), map));
+	NPCs.push_back(new NPC(conMan->GetTexture("circle.png"), map));
 }
 
 void NPCManager::Swap(int i)
