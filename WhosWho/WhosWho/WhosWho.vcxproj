@@ -90,6 +90,7 @@
     <ClInclude Include="NPC.h" />
     <ClInclude Include="NPCManager.h" />
     <ClInclude Include="ScreenManager.h" />
+    <ClInclude Include="SoundManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Tile.h" />
     <ClInclude Include="Tilemap.h" />
@@ -106,6 +107,7 @@
     <ClCompile Include="NPC.cpp" />
     <ClCompile Include="NPCManager.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
+    <ClCompile Include="SoundManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Tile.cpp" />
     <ClCompile Include="Tilemap.cpp" />

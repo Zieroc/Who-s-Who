@@ -3,7 +3,7 @@
 #include "GameScreen.h"
 //#include "Character.h"
 #include "TileMap.h"
-//#include "SoundManager.h"
+#include "SoundManager.h"
 #include <SDL_mixer.h>
 #include "NPCManager.h"
 
@@ -24,6 +24,7 @@ public:
 private:
 	TileMap* m_p_Map;
 	NPCManager* npcManager;
+	SoundManager* m_p_SoundManager;
 };
 
 #endif

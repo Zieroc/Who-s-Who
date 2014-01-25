@@ -4,6 +4,7 @@
 #include "NPC.h"
 #include "ContentManager.h"
 #include "Tilemap.h"
+#include "SoundManager.h"
 #include <vector>
 
 using std::vector;
@@ -11,7 +12,7 @@ using std::vector;
 class NPCManager
 {
 public:
-	NPCManager(ContentManager* conManRef, TileMap* tileMapRef);
+	NPCManager(ContentManager* conManRef, TileMap* tileMapRef, SoundManager* soundManRef);
 	~NPCManager();
 	void Update(Uint32 timeElapsed, InputHandler*);
 	void Draw(SDL_Renderer*);
@@ -24,5 +25,6 @@ public:
 	TileMap* map;
 	int max;
 	int p1, p2;
+	SoundManager* soundMan;
 };
 #endif

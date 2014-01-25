@@ -23,6 +23,10 @@ Sprite::Sprite(CC_Texture* texture, int width, int height)
 
 Sprite::~Sprite()
 {
+	for(std::vector<Animation*>::size_type i = 0; i != m_p_Animations.size(); i++)
+	{
+		delete(m_p_Animations[i]);
+	}
 }
 
 void Sprite::Update(Uint32 timeElapsed)

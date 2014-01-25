@@ -1,7 +1,8 @@
 #include "NPCManager.h"
 
-NPCManager::NPCManager(ContentManager* conManRef, TileMap* tileMapRef)
+NPCManager::NPCManager(ContentManager* conManRef, TileMap* tileMapRef, SoundManager* soundManRef)
 {
+	soundMan = soundManRef;
 	conMan = conManRef;
 	map = tileMapRef;
 	max = 10;
@@ -20,6 +21,10 @@ NPCManager::NPCManager(ContentManager* conManRef, TileMap* tileMapRef)
 
 NPCManager::~NPCManager()
 {
+	for(std::vector<NPC*>::size_type i = 0; i != NPCs.size(); i++)
+	{
+		delete(NPCs[i]);
+	}
 }
 
 void NPCManager::Update(Uint32 timeElapsed, InputHandler* input)
@@ -34,23 +39,26 @@ void NPCManager::Update(Uint32 timeElapsed, InputHandler* input)
 		if(SDL_HasIntersection(&NPCs.at(p1)->bounds, &NPCs.at(p2)->bounds))
 		{
 			Swap(2);
+			soundMan->PlaySoundEffect("hit.wav");
 		}
 		else
 		{
 			//NPCs.at(p1)->Tint(0, 0, 255);
+			soundMan->PlaySoundEffect("miss.wav");
 		}
 
-		//NPCs.at(p1)->attacking = false;
+		NPCs.at(p1)->attacking = false;
 	}
 	if(NPCs.at(p2)->attacking)
 	{
 		if(SDL_HasIntersection(&NPCs.at(p1)->bounds, &NPCs.at(p2)->bounds))
 		{
 			Swap(1);
+			soundMan->PlaySoundEffect("hit.wav");
 		}
 		else
 		{
-			//FLASH
+			soundMan->PlaySoundEffect("miss.wav");
 		}
 
 		NPCs.at(p2)->attacking = false;

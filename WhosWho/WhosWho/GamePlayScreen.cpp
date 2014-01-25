@@ -11,6 +11,7 @@ GameplayScreen::GameplayScreen()
 GameplayScreen::~GameplayScreen()
 {
 	delete(m_p_Map);
+	delete(npcManager);
 }
 
 void GameplayScreen::Initialize(ScreenManager* manager)
@@ -20,11 +21,9 @@ void GameplayScreen::Initialize(ScreenManager* manager)
 
 void GameplayScreen::LoadContent(SDL_Renderer* renderer, ContentManager* conMan)
 {
-	/*m_p_SoundManager = new SoundManager(conMan);
-	conMan->LoadSoundEffect("laser.wav");
-	conMan->LoadTexture("bob.png");
-	conMan->LoadTexture("square.png");*/
-	//*m_p_SoundManager->PlaySoundEffect("laser.wav");*/
+	m_p_SoundManager = new SoundManager(conMan);
+	conMan->LoadSoundEffect("miss.wav");
+	conMan->LoadSoundEffect("hit.wav");
 	
 	conMan->LoadTexture("Tiles.png");
 	m_p_Map = new TileMap(conMan->GetTexture("Tiles.png"));
@@ -32,7 +31,7 @@ void GameplayScreen::LoadContent(SDL_Renderer* renderer, ContentManager* conMan)
 
 	conMan->LoadTexture("circle.png");
 	conMan->LoadTexture("blip.png");
-	npcManager = new NPCManager(conMan, m_p_Map);
+	npcManager = new NPCManager(conMan, m_p_Map, m_p_SoundManager);
 }
 
 void GameplayScreen::UnloadContent()
