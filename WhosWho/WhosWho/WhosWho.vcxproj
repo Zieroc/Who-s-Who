@@ -37,10 +37,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SolutionDir)\SDL2_mixer-2.0.0\include;$(SolutionDir)\SDL2_image-2.0.0\include;$(SolutionDir)\SDL2-2.0.0\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)\SDL2_mixer-2.0.0\include;$(SolutionDir)\SDL2_image-2.0.0\include;$(SolutionDir)\SDL2-2.0.0\include;$(SolutionDir)\SDL2_ttf-2.0.12\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <LibraryPath>$(SolutionDir)\SDL2_mixer-2.0.0\lib\x86;$(SolutionDir)\SDL2_image-2.0.0\lib\x86;$(SolutionDir)\SDL2-2.0.0\lib\x86;$(LibraryPath)</LibraryPath>
+    <LibraryPath>$(SolutionDir)\SDL2_mixer-2.0.0\lib\x86;$(SolutionDir)\SDL2_image-2.0.0\lib\x86;$(SolutionDir)\SDL2_ttf-2.0.12\lib\x86;$(SolutionDir)\SDL2-2.0.0\lib\x86;$(LibraryPath)</LibraryPath>
     <LinkIncremental>false</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -57,9 +57,9 @@
     </ClCompile>
     <Link>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>$(SolutionDir)\SDL2_mixer-2.0.0\lib\x86;$(SolutionDir)\SDL2_image-2.0.0\lib\x86;$(SolutionDir)\SDL2-2.0.0\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SolutionDir)\SDL2_mixer-2.0.0\lib\x86;$(SolutionDir)\SDL2_image-2.0.0\lib\x86;$(SolutionDir)\SDL2_ttf-2.0.12\lib\x86;$(SolutionDir)\SDL2-2.0.0\lib\x86;$(LibraryPath)</AdditionalLibraryDirectories>
       <SubSystem>Console</SubSystem>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;SDL2_ttf.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
