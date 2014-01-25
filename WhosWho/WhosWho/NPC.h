@@ -15,5 +15,7 @@ public:
 	void VerticalTileCollisionTest();
 	void CalcBounds();
 	void SetType(int);
+	int direction;
+	float timer;
 };
 #endif

@@ -17,9 +17,12 @@ public:
 	void Draw(SDL_Renderer*);
 	void Initialise();
 	void Add();
+	void Swap(int);
 	vector<NPC*> NPCs;
 	SDL_Renderer* renderer;
 	ContentManager* conMan;
 	TileMap* map;
+	int max;
+	int p1, p2;
 };
 #endif

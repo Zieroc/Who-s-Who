@@ -4,14 +4,18 @@ NPCManager::NPCManager(ContentManager* conManRef, TileMap* tileMapRef)
 {
 	conMan = conManRef;
 	map = tileMapRef;
+	max = 175;
 
-	for(int i = 0; i < 10; i++)
+	for(int i = 0; i < max; i++)
 	{
 		Add();
 	}
 
 	NPCs.at(0)->SetType(1);
 	NPCs.at(1)->SetType(2);
+
+	p1 = 0;
+	p2 = 1;
 }
 
 NPCManager::~NPCManager()
@@ -38,4 +42,24 @@ void NPCManager::Draw(SDL_Renderer* renderer)
 void NPCManager::Add()
 {
 	NPCs.push_back(new NPC(conMan->GetTexture("circle.png"), map));
+}
+
+void NPCManager::Swap(int i)
+{
+	int newGuy = p1;
+	while(newGuy == p1 || newGuy == p2)
+	{
+		newGuy = rand() % max;
+	}
+	NPCs.at(newGuy)->SetType(i);
+	if(i == 1)
+	{
+		NPCs.at(p1)->SetType(3);
+		p1 = newGuy;
+	}
+	else
+	{
+		NPCs.at(p2)->SetType(3);
+		p2 = newGuy;
+	}
 }
