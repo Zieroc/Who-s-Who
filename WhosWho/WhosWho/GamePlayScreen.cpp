@@ -28,6 +28,7 @@ void GameplayScreen::LoadContent(SDL_Renderer* renderer, ContentManager* conMan)
 	
 	conMan->LoadTexture("Tiles.png");
 	m_p_Map = new TileMap(conMan->GetTexture("Tiles.png"));
+	m_p_Map->LoadMap("data/Files/arena.lvl");
 
 	conMan->LoadTexture("circle.png");
 	npcManager = new NPCManager(conMan, m_p_Map);

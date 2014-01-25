@@ -15,6 +15,7 @@ public:
 	void VerticalTileCollisionTest();
 	void CalcBounds();
 	void SetType(int);
+	void Tint(Uint8 r, Uint8 g, Uint8 b);
 	int direction;
 	float timer;
 	bool pressed;

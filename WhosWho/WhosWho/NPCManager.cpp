@@ -41,7 +41,7 @@ void NPCManager::Update(Uint32 timeElapsed, InputHandler* input)
 		}
 		else
 		{
-			//FLASH
+			NPCs.at(p1)->Tint(0, 0, 255);
 		}
 
 		NPCs.at(p1)->attacking = false;
