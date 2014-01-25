@@ -4,7 +4,7 @@ NPCManager::NPCManager(ContentManager* conManRef, TileMap* tileMapRef)
 {
 	conMan = conManRef;
 	map = tileMapRef;
-	max = 175;
+	max = 10;
 
 	for(int i = 0; i < max; i++)
 	{
@@ -27,10 +27,6 @@ void NPCManager::Update(Uint32 timeElapsed, InputHandler* input)
 	for(std::size_t i = 0; i < NPCs.size(); i++)
 	{
 		NPCs.at(i)->Update(timeElapsed, input);
-		if(NPCs.at(i)->Player1)
-		{
-			NPCs.at(i)->image->m_p_Texture == conMan->GetTexture("Player1.png");
-		}
 	}
 
 	if(NPCs.at(p1)->attacking)
@@ -41,10 +37,10 @@ void NPCManager::Update(Uint32 timeElapsed, InputHandler* input)
 		}
 		else
 		{
-			NPCs.at(p1)->Tint(0, 0, 255);
+			//NPCs.at(p1)->Tint(0, 0, 255);
 		}
 
-		NPCs.at(p1)->attacking = false;
+		//NPCs.at(p1)->attacking = false;
 	}
 	if(NPCs.at(p2)->attacking)
 	{
@@ -72,7 +68,7 @@ void NPCManager::Draw(SDL_Renderer* renderer)
 // create a new NPC
 void NPCManager::Add()
 {
-	NPCs.push_back(new NPC(conMan->GetTexture("circle.png"), map));
+	NPCs.push_back(new NPC(conMan->GetTexture("circle.png"), conMan->GetTexture("blip.png"), map));
 }
 
 void NPCManager::Swap(int i)

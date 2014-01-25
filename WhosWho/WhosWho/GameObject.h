@@ -20,6 +20,7 @@ public:
 	float velY;
 	bool alive;
 	Sprite* image;
+	Sprite* blip;
 	bool flipped;
 	enum Type { Player1, Player2, Normal };
 	Type type;

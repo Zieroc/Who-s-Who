@@ -78,6 +78,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Animation.h" />
     <ClInclude Include="CC_Texture.h" />
     <ClInclude Include="ContentManager.h" />
     <ClInclude Include="Debug.h" />
@@ -94,6 +95,7 @@
     <ClInclude Include="Tilemap.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="CC_Texture.cpp" />
     <ClCompile Include="ContentManager.cpp" />
     <ClCompile Include="Game.cpp" />
