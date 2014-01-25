@@ -16,7 +16,7 @@ public:
 	virtual void Initialize(ScreenManager* manager) = 0;
 	virtual void LoadContent(SDL_Renderer* renderer, ContentManager* conMan) = 0;
 	virtual void UnloadContent() = 0;
-	virtual void Update(Uint32 timeElapsed) = 0;
+	virtual void Update(Uint32 timeElapsed, InputHandler* input) = 0;
 	virtual void Draw(SDL_Renderer* renderer) = 0;
 	virtual void HandleInput(InputHandler* input) = 0;
 	virtual void HandleEvents(SDL_Event sdlEvent) = 0;
