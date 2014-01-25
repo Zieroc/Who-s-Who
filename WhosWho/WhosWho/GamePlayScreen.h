@@ -17,13 +17,14 @@ public:
 	void Initialize(ScreenManager* manager);
 	void LoadContent(SDL_Renderer* renderer, ContentManager* conMan);
 	void UnloadContent();
-	void Update(Uint32 timeElapsed);
+	void Update(Uint32 timeElapsed, InputHandler* input);
 	void Draw(SDL_Renderer* renderer);
 	void HandleInput(InputHandler* input);
 	void HandleEvents(SDL_Event sdlEvent);
 private:
 	TileMap* m_p_Map;
 	NPC* npcTest;
+	NPC* npc2;
 };
 
 #endif

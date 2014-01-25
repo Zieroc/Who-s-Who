@@ -47,7 +47,7 @@ void ScreenManager::Update(Uint32 timeElapsed)
 
 	m_p_InputHandler->Update(); //Update the input
 
-	m_p_Screen->Update(timeElapsed); //Update the current screen
+	m_p_Screen->Update(timeElapsed, m_p_InputHandler); //Update the current screen
 
 	m_p_Screen->HandleInput(m_p_InputHandler); //Handle input for the current screen
 }
