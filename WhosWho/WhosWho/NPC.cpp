@@ -1,20 +1,22 @@
 #include "NPC.h"
+#include <stdlib.h>
 
-NPC::NPC()
+NPC::NPC(CC_Texture* texture)
 {
-	x = 100;
-	y = 100;
+	// generate random position for enemy
+	x = rand() % 740 + 20;
+	y = rand() % 600 + 20;
+	
+	//x = 100;
+	//y = 100;
+
+	image = new Sprite(texture, 16, 16);
+	speed = 2;
+	type = Normal;
 }
 
 NPC::~NPC()
 {
-}
-
-void NPC::Initialize(CC_Texture* texture)
-{
-	image = new Sprite(texture, 16, 16);
-	speed = 2;
-	type = Normal;
 }
 
 void NPC::Update(Uint32 timeElapsed)

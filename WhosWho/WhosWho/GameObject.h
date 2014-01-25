@@ -12,7 +12,6 @@ class GameObject
 public:
 	virtual void Update(Uint32) = 0;
 	void Draw(SDL_Renderer*);
-	void Initialize(CC_Texture*);
 	int x, y;
 	float speed;
 	bool alive;

@@ -1,9 +1,12 @@
 //TESTING
 #include "Game.h"
 #include <iostream>
+#include <time.h>
 
 int main(int args, char* p_args[])
 {
+	// For my random numbers (for npc positions)
+	srand (time(NULL));
 
 	Game* game = new Game();
 	DEBUG_MSG("Game Object Created");

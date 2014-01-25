@@ -87,6 +87,7 @@
     <ClInclude Include="GameScreen.h" />
     <ClInclude Include="InputHandler.h" />
     <ClInclude Include="NPC.h" />
+    <ClInclude Include="NPCManager.h" />
     <ClInclude Include="ScreenManager.h" />
     <ClInclude Include="Sprite.h" />
     <ClInclude Include="Tile.h" />
@@ -101,6 +102,7 @@
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NPC.cpp" />
+    <ClCompile Include="NPCManager.cpp" />
     <ClCompile Include="ScreenManager.cpp" />
     <ClCompile Include="Sprite.cpp" />
     <ClCompile Include="Tile.cpp" />

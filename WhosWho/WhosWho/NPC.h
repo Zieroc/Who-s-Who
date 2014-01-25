@@ -6,9 +6,8 @@
 class NPC : public GameObject
 {
 public:
-	NPC();
+	NPC(CC_Texture*);
 	~NPC();
-	void Initialize(CC_Texture*);
 	void Update(Uint32);
 	void Draw(SDL_Renderer*);
 };
