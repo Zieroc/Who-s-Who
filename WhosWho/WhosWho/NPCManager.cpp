@@ -28,6 +28,33 @@ void NPCManager::Update(Uint32 timeElapsed, InputHandler* input)
 	{
 		NPCs.at(i)->Update(timeElapsed, input);
 	}
+
+	if(NPCs.at(p1)->attacking)
+	{
+		if(SDL_HasIntersection(&NPCs.at(p1)->bounds, &NPCs.at(p2)->bounds))
+		{
+			Swap(2);
+		}
+		else
+		{
+			//FLASH
+		}
+
+		NPCs.at(p1)->attacking = false;
+	}
+	if(NPCs.at(p2)->attacking)
+	{
+		if(SDL_HasIntersection(&NPCs.at(p1)->bounds, &NPCs.at(p2)->bounds))
+		{
+			Swap(1);
+		}
+		else
+		{
+			//FLASH
+		}
+
+		NPCs.at(p2)->attacking = false;
+	}
 }
 
 void NPCManager::Draw(SDL_Renderer* renderer)

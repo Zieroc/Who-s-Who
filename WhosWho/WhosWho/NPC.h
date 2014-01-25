@@ -17,5 +17,7 @@ public:
 	void SetType(int);
 	int direction;
 	float timer;
+	bool pressed;
+	bool attacking;
 };
 #endif

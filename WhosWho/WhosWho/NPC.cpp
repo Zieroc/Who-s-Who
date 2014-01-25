@@ -2,6 +2,8 @@
 
 NPC::NPC(CC_Texture* texture, TileMap* map)
 {
+	attacking = false;
+	pressed = false;
 	direction = 0;
 	timer = 0;
 	x = rand() % (740 - 16) + 20;
@@ -121,6 +123,20 @@ void NPC::Update(Uint32 timeElapsed, InputHandler* input)
 		{
 			velX = speed * (timeElapsed / 1000.0f);
 		}
+		
+		if(input->KeyPressed(SDLK_f) && !pressed)
+		{
+			pressed = true;
+			attacking = true;
+		}
+
+		if(pressed)
+		{
+			if(!input->KeyPressed(SDLK_f))
+			{
+				pressed = false;
+			}
+		}
 	}
 
 	else if(type == Player2)
@@ -140,6 +156,20 @@ void NPC::Update(Uint32 timeElapsed, InputHandler* input)
 		if(input->KeyPressed(SDLK_RIGHT))
 		{
 			velX = speed * (timeElapsed / 1000.0f);
+		}
+
+		if(input->KeyPressed(SDLK_KP_0) && !pressed)
+		{
+			pressed = true;
+			attacking = true;
+		}
+
+		if(pressed)
+		{
+			if(!input->KeyPressed(SDLK_KP_0))
+			{
+				pressed = false;
+			}
 		}
 	}
 
